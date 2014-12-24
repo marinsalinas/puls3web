@@ -8,6 +8,7 @@
     font-weight: normal;
     font-style: normal;
 }*/
+@import("http://fonts.googleapis.com/css?family=Open+Sans:400,700");
 
 @font-face {
 	font-family: 'puls_icons';
@@ -137,12 +138,23 @@ header #avatar img
     width: 55px;
 }
 
-header #logo img
+header #logo
 {
     border-right: 1px solid white;
     margin-right: 0.5em;
     padding-right: 0.5em;
+}
+
+
+header #logo img 
+{    
     width: 52px;
+     -webkit-transition: 0.5s;
+}
+
+header #logo img:hover{
+     -webkit-transform: rotate(360deg) scale(0.5,0.5);
+        
 }
 
 nav
@@ -172,10 +184,26 @@ nav ul #publicar_nav a {
     border-radius: 5px;
     box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
     font-style: italic;
-    padding: 0.7em 0.5em;
+    padding: 0.8em 0.5em 0.8em 2.5em;
     text-decoration: none;
     text-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
 }
+
+nav ul #publicar_nav a:before{
+    position: absolute;
+    top: 0.8em;
+    left: 0.5em;
+     -webkit-transition: .2s;
+    
+}
+
+
+nav ul #publicar_nav a:hover:before
+{    
+    font-size: 22px;
+    top: 0.5em;
+}
+
 
 nav ul li
 {
@@ -187,7 +215,18 @@ nav ul li a
 {
     color: white;
     display: block;
-    padding: 0.5em 0;
+    padding: 0.5em;
+    -webkit-transition: .3s;
+}
+
+nav ul li a:hover
+{
+    background: #343B54;
+}
+
+aside
+{
+    display: none;
 }
 
 #contenido
@@ -301,15 +340,65 @@ nav ul li a
     float: right;
 }
 
-@media screen and (min-width:800px){
-    body{
-        background: red;
+@media screen and (min-width:800px)
+{    
+    #contenido
+    {
+        overflow: hidden;
     }
     
     #contenido .item{
-        width: 50%;
+        float: left;
+        width: 49%;
+    }
+    
+    #contenido .item:nth-child(odd){
+        margin-right: 2%;
     }
 }
+
+@media screen and (min-width:1000px){
+    aside{
+		display: block;
+		float: right;
+		margin:1em;
+		width: 20%;
+	}
+	aside video{
+		width: 100%;
+	}
+    
+}
+
+/**
+*Formulario
+*/
+
+/**
+ * Formularios
+ */
+.formulario{
+	text-align: right;
+	padding: 1em;
+	display: none;
+}
+.formulario input{
+	border-radius: 5px;
+	padding: 0.2em 0.6em;
+}
+.formulario input[type="text"],
+.formulario input[type="url"]{
+	border: 1px solid #888;
+}
+.formulario input[type="submit"]{
+	background: #22BCE0;
+	border: 1px solid #22BCE0;
+	box-shadow: rgba(0,0,0,0.5) 5px 5px 20px;
+	font-style: italic;
+	text-shadow: rgba(0,0,0,0.5) 2px 2px 5px;
+	color: white;
+}
+
 
 
 
