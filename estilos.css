@@ -204,6 +204,13 @@ nav ul #publicar_nav a:hover:before
     top: 0.5em;
 }
 
+nav ul #publicar_nav a.disabled 
+{
+    background: grey;
+    cursor: default;
+    box-shadow: none;
+    
+}
 
 nav ul li
 {

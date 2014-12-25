@@ -1,0 +1,6 @@
+Stateless -> Navegadores
+	-Conecta (Request) -> sirve peticion (Response) -> cierra conexion.
+
+Cookies - Una forma de identificar al usuario en forma de pequeños pedasos de texto.
+
+ 

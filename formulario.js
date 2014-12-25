@@ -5,7 +5,21 @@ var $form = $('#formulario'),
     $list = $('#contenido'),
     $post = $('.item').first();
 
-function agregarPost(){
+if(localStorage.getItem('autosave')){
+    $titulo.val(sessionStorage.getItem('titulo'))
+    $url.val(sessionStorage.getItem('url'))
+}
+
+var id = setInterval(function(){
+    sessionStorage.setItem('titulo', $titulo.val());
+    sessionStorage.setItem('url', $url.val())
+
+}, 1000);
+
+
+function agregarPost(e){
+    e.preventDefault();
+
     var url = $url.val(),
         titulo = $titulo.val(),
         $clone = $post.clone();
@@ -17,18 +31,25 @@ function agregarPost(){
     $clone.hide();
     
     $list.prepend($clone);
-    $clone.fadeIn();
-    
+    mostrarFormulario();
+    $titulo.val("");
+    $url.val("");
+    $clone.slideDown();
     //cancelar el evento
-    return false;
+    //return e.preventDefault();
 }
 
 
 
-function mostrarFormulario(){
-    $form.slideToggle();
+function mostrarFormulario(e){
+   // "use strict"; //Js de forma estricta
+    if(e) e.preventDefault()
+
+    $form.slideToggle('slow')
+    $list.slideToggle('slow')
+    
     //nos ayuda a prevent defaout event y ademas el stop bubbling
-    return false;
+    //return e.prevent;
 }
 
 
