@@ -3,7 +3,9 @@ var $form = $('#formulario'),
     $url = $('#url'),
     $button = $('.mostrar_form'),
     $list = $('#contenido'),
-    $post = $('.item').first();
+    $post = $('.item').first(),
+    $publicarNavLink = $('#publicar_nav a'),
+    $aside = $('aside');
 
 if(localStorage.getItem('autosave')){
     $titulo.val(sessionStorage.getItem('titulo'))
@@ -47,6 +49,7 @@ function mostrarFormulario(e){
 
     $form.slideToggle('slow')
     $list.slideToggle('slow')
+    $aside.slideToggle('slow')
     
     //nos ayuda a prevent defaout event y ademas el stop bubbling
     //return e.prevent;
@@ -56,4 +59,22 @@ function mostrarFormulario(e){
 
 //Eventos
 $button.click(mostrarFormulario);
-$form.on('submit', agregarPost);
+$form.on('submit', agregarPost)
+    .find('#url')
+    .on('focus', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+        if($url.val() == ''){
+            $url.val('http://');
+        }
+    })
+    .on('blur', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+        if($url.val() == 'http://'){
+            $url.val('');
+        }
+    });
+$publicarNavLink.click(function(event) {
+    $(this).toggleClass('disabled');
+});
